@@ -85,9 +85,6 @@ function Profile({ profile }: ProfileProps) {
                                     alt={profile.name}
                                     className="w-32 h-32 rounded-full mx-auto object-cover"
                                 />
-                                <button className="absolute bottom-0 right-1/3 p-2 bg-rose-600 rounded-full hover:bg-rose-700 transition-colors">
-                                    <Camera size={20} />
-                                </button>
                             </div>
                             <div className="text-center">
                                 <h2 className="text-xl font-semibold mb-1">{profile.name}</h2>

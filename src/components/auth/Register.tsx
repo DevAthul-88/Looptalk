@@ -49,7 +49,7 @@ export default function RegisterPage() {
       await setDoc(doc(db, "users", userCredential.user.uid), {
         username: username,
         email: email,
-        photoURL: userCredential?.user?.photoURL,
+        photoURL:`https://api.dicebear.com/9.x/pixel-art/svg?seed=${username}`,
         createdAt: new Date(),
       })
 
@@ -76,6 +76,7 @@ export default function RegisterPage() {
     const provider = new GoogleAuthProvider()
     try {
       const userCredential = await signInWithPopup(auth, provider)
+      const user = userCredential.user;
       
       if (username && !userCredential.user.displayName) {
         await updateProfile(userCredential.user, {
@@ -83,10 +84,14 @@ export default function RegisterPage() {
         })
       }
 
+      await updateProfile(user, { 
+        photoURL: `https://api.dicebear.com/9.x/pixel-art/svg?seed=${userCredential?.user?.displayName}` 
+      });
+
       await setDoc(doc(db, "users", userCredential.user.uid), {
         username: userCredential.user.displayName || username,
         email: userCredential.user.email,
-        photoURL: userCredential?.user?.photoURL,
+        photoURL:`https://api.dicebear.com/9.x/pixel-art/svg?seed=${userCredential?.user?.displayName}`,
         createdAt: new Date(),
       })
 

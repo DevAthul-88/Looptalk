@@ -28,7 +28,6 @@ export function MemberList({ isOpen, onClose }: MemberListProps) {
   if (!selectedServer) return null;
 
   const isOwner = currentUser?.uid === selectedServer.ownerId;
-
   // Sort members: show the owner first
   const sortedMembers = selectedServer.members.sort((a: Member, b: Member) =>
     a.id === selectedServer.ownerId ? -1 : b.id === selectedServer.ownerId ? 1 : 0

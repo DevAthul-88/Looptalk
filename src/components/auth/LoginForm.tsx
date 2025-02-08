@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, AuthError } from "@firebase/auth"
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, AuthError, updateProfile } from "@firebase/auth"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
@@ -11,7 +11,8 @@ import { FaGoogle } from "react-icons/fa"
 import { Loader2 } from "lucide-react"
 import { useRouter } from "next/navigation"
 import Head from "next/head"
-import { auth } from "../../../lib/firebase"
+import { auth, db } from "../../../lib/firebase"
+import { doc, getDoc, setDoc } from "@firebase/firestore"
 
 export default function LoginPage() {
   const [email, setEmail] = useState<string>("")
@@ -56,19 +57,40 @@ export default function LoginPage() {
   }
 
   const handleGoogleLogin = async () => {
-    setGoogleLoading(true)
-    setError("")
-    const provider = new GoogleAuthProvider()
+    setGoogleLoading(true);
+    setError("");
+    const provider = new GoogleAuthProvider();
+  
     try {
-      await signInWithPopup(auth, provider)
-      router.push("/app/me")
+      const userCredential = await signInWithPopup(auth, provider);
+      const user = userCredential.user;
+  
+      if (!user) throw new Error("Google login failed");
+  
+      const userRef = doc(db, "users", user.uid);
+      const userSnap = await getDoc(userRef);
+
+      await updateProfile(user, { 
+        photoURL: `https://api.dicebear.com/9.x/pixel-art/svg?seed=${user.displayName}` 
+      });
+  
+      if (!userSnap.exists()) {
+        await setDoc(userRef, {
+          username: user.displayName,
+          email: user.email,
+          photoURL: `https://api.dicebear.com/9.x/pixel-art/svg?seed=${user.displayName}`,
+          createdAt: new Date(),
+        });
+      }
+  
+      router.push("/app/me");
     } catch (error) {
-      const err = error as AuthError
-      setError(err.message || "Failed to log in with Google.")
+      const err = error as AuthError;
+      setError(err.message || "Failed to log in with Google.");
     } finally {
-      setGoogleLoading(false)
+      setGoogleLoading(false);
     }
-  }
+  };
 
   return (
     <>
