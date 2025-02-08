@@ -1,5 +1,5 @@
 {
-  "name": "blab",
+  "name": "LoopTalk",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,16 +9,42 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebase/auth": "^1.8.2",
+    "@firebase/firestore": "^4.7.6",
+    "@firebase/storage": "^0.13.5",
+    "@hookform/resolvers": "^3.10.0",
+    "@radix-ui/react-dialog": "^1.1.5",
+    "@radix-ui/react-hover-card": "^1.1.6",
+    "@radix-ui/react-label": "^2.1.1",
+    "@radix-ui/react-select": "^2.1.5",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@radix-ui/react-tooltip": "^1.1.7",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "emoji-picker-react": "^4.12.0",
+    "framer-motion": "^12.4.1",
+    "lucide-react": "^0.474.0",
+    "moment": "^2.30.1",
+    "motion": "^12.4.1",
+    "next": "15.1.6",
+    "next-themes": "^0.4.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.1.6"
+    "react-hook-form": "^7.54.2",
+    "react-icons": "^5.4.0",
+    "sonner": "^1.7.4",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss-animate": "^1.0.7",
+    "trianglify": "^4.1.1",
+    "zod": "^3.24.1",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "postcss": "^8",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
