@@ -88,7 +88,7 @@ export function MemberList({ isOpen, onClose }: MemberListProps) {
             className="group flex items-center gap-3 p-2 rounded-lg hover:bg-[#393C43] transition-colors cursor-pointer"
           >
             <div className="relative">
-              <Image
+              <img
                 src={member.avatar || 'https://api.dicebear.com/9.x/lorelei/png?flip=true'}
                 alt={member.name}
                 width={32}

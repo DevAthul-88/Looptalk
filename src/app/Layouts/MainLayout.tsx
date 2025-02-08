@@ -12,10 +12,6 @@ function MainLayout({ children }: any) {
             <AuthProvider>
                 {/* Main Content */}
                 <div className="flex-1 flex flex-col lg:ml-0 ">
-                    {/* Fixed Header */}
-
-
-                    {/* Content with top padding for fixed header */}
                     {children}
                 </div>
             </AuthProvider>

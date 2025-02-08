@@ -41,14 +41,8 @@ const useServerStore = create((set, get) => ({
       }
   
       const serverData = serverSnap.data() as { members: string[], name: string, ownerId: string, createdAt?: any };
-      
-      // Log the members array to ensure it's populated
-      console.log('Members:', serverData.members);
-  
+    
       const memberDetails = await get().fetchMemberDetails(serverData.members);
-  
-      // Log the fetched member details for debugging
-      console.log('Fetched member details:', memberDetails);
   
       const createdAt = serverData.createdAt instanceof Date ? serverData.createdAt : (serverData.createdAt?.toDate ? serverData.createdAt.toDate() : new Date());
   
