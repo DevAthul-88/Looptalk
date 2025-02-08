@@ -48,7 +48,7 @@ function HomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="hidden md:flex space-x-8"
             >
-              <a href="#" className="nav-link">Open Source</a>
+              <a href="https://github.com/DevAthul-88/Looptalk" target="_blank" className="nav-link">Open Source</a>
               <Link href="mailto:athulvinod@gmail.com" className="nav-link">Support</Link>
               <Link href="/login" className="nav-link">Get Started</Link>
             </motion.div>
@@ -62,7 +62,7 @@ function HomePage() {
               className="md:hidden mt-4 bg-gray-900/95 rounded-lg p-4"
             >
               <div className="flex flex-col space-y-4">
-                <a href="#" className="nav-link block">Open Source</a>
+                <a href="https://github.com/DevAthul-88/Looptalk" target="_blank" className="nav-link block">Open Source</a>
                 <Link href="mailto:athulvinod@gmail.com" className="nav-link block">Support</Link>
                 <Link href="/login" className="nav-link block">Get Started</Link>
               </div>
